@@ -13,10 +13,6 @@ module DPL
         context.shell "wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux | tar -xf azcopy.tar.gz | ./install.sh"
       end
 
-      def git_target
-        "https://#{config['username']}:#{config['password']}@#{config['slot'] || config['site']}.scm.azurewebsites.net:443/#{config['site']}.git"
-      end
-
       def needs_key?
         false
       end
