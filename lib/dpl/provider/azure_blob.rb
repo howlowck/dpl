@@ -17,7 +17,7 @@ module DPL
         context.shell "sudo apt-get install dotnet-dev-1.1.4 -q"
         context.shell "wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux"
         context.shell "tar -xf azcopy.tar.gz"
-        context.shell "sudo ./install.sh"
+        context.shell "sudo bash install.sh"
       end
 
       def needs_key?
