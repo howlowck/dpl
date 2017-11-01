@@ -10,6 +10,11 @@ module DPL
       end
 
       def install_deploy_dependencies
+        context.shell "curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg"
+        context.shell "sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg"
+        context.shell "sudo sh -c 'echo \"deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main\" > /etc/apt/sources.list.d/dotnetdev.list'"
+        context.shell "sudo apt-get -update -q"
+        context.apt_get "dotnet-dev-1.1.4"
         context.shell "wget -O azcopy.tar.gz https://aka.ms/downloadazcopyprlinux | tar -xf azcopy.tar.gz | ./install.sh"
       end
 
